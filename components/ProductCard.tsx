@@ -2,9 +2,7 @@
 
 import { addItem } from '@/app/add-to-cart/action'
 import { formatNumber } from '@/utils/format'
-import Image from 'next/image'
 import { useTransition } from 'react'
-import CoffeeImage from '/public/coffe.jpg'
 
 // Defining the type for props passed to ProductCard component
 type ProductCartProps = {
@@ -26,15 +24,6 @@ export default function ProductCard({
 
 	return (
 		<div className='p-3 border rounded-xl border-slate-700'>
-			<div className='mb-2 bg-gray-300 rounded-md'>
-				<Image
-					src={CoffeeImage}
-					alt='coffee'
-					width={180}
-					height={180}
-					className='w-[180px] h-[180px] rounded object-cover'
-				/>
-			</div>
 			<h2 className='text-slate-900'>{name}</h2>
 			<h2 className='font-semibold text-green-500'>$ {formatNumber(price)}</h2>
 			<button
