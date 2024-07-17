@@ -4,7 +4,7 @@ import { addItem } from '@/app/add-to-cart/action'
 import { formatNumber } from '@/utils/format'
 import Image from 'next/image'
 import { useTransition } from 'react'
-import CoffeeImage from '../../public/coffe.jpg'
+import CoffeeImage from '/public/coffe.jpg'
 
 // Defining the type for props passed to ProductCard component
 type ProductCartProps = {
