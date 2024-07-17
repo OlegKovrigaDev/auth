@@ -1,10 +1,9 @@
-'use client' // client component
+'use client'
 
 import { delItem, delOneItem } from '@/app/add-to-cart/action'
 import { formatNumber } from '@/utils/format'
 import { useTransition } from 'react'
 
-// Defining the type for props passed to CartItem component
 type CartItemProps = {
 	no: number
 	id: number
@@ -22,7 +21,6 @@ export default function CartItem({
 	quantity,
 	price
 }: CartItemProps) {
-	// Declaring state for pending transition
 	let [isPending, startTransition] = useTransition()
 
 	return (
@@ -36,7 +34,6 @@ export default function CartItem({
 			<button
 				className='text-sm font-semibold hover:text-slate-600'
 				onClick={() => {
-					// Initiating a transition to delete all items of this type from the cart
 					startTransition(() => delItem(userId, id))
 				}}
 			>
@@ -45,7 +42,6 @@ export default function CartItem({
 			<button
 				className='text-sm font-semibold hover:text-slate-600'
 				onClick={() => {
-					// Initiating a transition to delete one item of this type from the cart
 					startTransition(() => delOneItem(userId, id))
 				}}
 			>

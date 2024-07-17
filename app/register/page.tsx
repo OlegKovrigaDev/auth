@@ -1,17 +1,17 @@
-import Signin from '@/components/auth/Signin'
+import Signup from '@/components/auth/Signup'
 import { authOptions } from '@/libs/auth'
 import { Session } from 'next-auth'
 import { getServerSession } from 'next-auth/next'
 import { redirect } from 'next/navigation'
 
-const Login = async () => {
+const Register = async () => {
 	const session: Session | null = await getServerSession(authOptions)
 
 	if (session) {
 		redirect('/add-to-cart')
 	} else {
-		return <Signin />
+		return <Signup />
 	}
 }
 
-export default Login
+export default Register

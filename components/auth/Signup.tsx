@@ -4,7 +4,7 @@ import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
-const Signin = () => {
+const Signup = () => {
 	const { data: session } = useSession()
 
 	useEffect(() => {
@@ -16,14 +16,14 @@ const Signin = () => {
 	return (
 		<section className='flex items-center justify-center w-full h-screen px-4'>
 			<form
-				className='p-6 xs:p-10	w-full max-w-[350px] flex flex-col justify-between items-center gap-2.5	
-         bg-white rounded text-black'
+				className='p-6 xs:p-10 w-full max-w-[350px] flex flex-col justify-between items-center gap-2.5	
+                bg-white rounded text-black'
 			>
-				<h1 className='w-full my-5 text-2xl font-bold'>Welcome back</h1>
+				<h1 className='w-full my-5 text-2xl font-bold'>Create an account</h1>
 
 				<button
 					className='w-full h-10 justify-center flex py-1.5 px-4 text-sm align-middle items-center rounded text-999 bg-[#F4F4F5]  
-           transition duration-150 ease hover:bg-gray-200 gap-3'
+                    transition duration-150 ease hover:bg-gray-200 gap-3'
 					onClick={e => {
 						e.preventDefault()
 						signIn('google')
@@ -56,15 +56,16 @@ const Signin = () => {
 					</svg>
 					Sign in with Google
 				</button>
+
 				<Link
-					href='/register'
+					href='/login'
 					className='text-sm text-gray-500 transition duration-150 ease hover:text-black'
 				>
-					Don&apos;t have an account?
+					Already have an account?
 				</Link>
 			</form>
 		</section>
 	)
 }
 
-export default Signin
+export default Signup

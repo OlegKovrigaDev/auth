@@ -1,10 +1,9 @@
-'use client' // client component
+'use client'
 
 import { addItem } from '@/app/add-to-cart/action'
 import { formatNumber } from '@/utils/format'
 import { useTransition } from 'react'
 
-// Defining the type for props passed to ProductCard component
 type ProductCartProps = {
 	id: number
 	userId: string
@@ -12,14 +11,12 @@ type ProductCartProps = {
 	price: number
 }
 
-// ProductCard component definition
 export default function ProductCard({
 	id,
 	userId,
 	name,
 	price
 }: ProductCartProps) {
-	// Declaring state for pending transition
 	let [isPending, startTransition] = useTransition()
 
 	return (
@@ -29,11 +26,9 @@ export default function ProductCard({
 			<button
 				className='w-full px-2 h-[30px] mt-4 text-sm font-semibold text-center rounded-md bg-slate-100 text-slate-900'
 				onClick={() => {
-					// Initiating a transition when the button is clicked
 					startTransition(() => addItem(userId, id))
 				}}
 			>
-				{/* Conditional rendering based on the pending state */}
 				{isPending ? (
 					<div className='grid w-full overflow-x-scroll rounded-lg place-items-center lg:overflow-visible'>
 						<svg

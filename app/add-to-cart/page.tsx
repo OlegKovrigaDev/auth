@@ -5,7 +5,7 @@ import { kv } from '@vercel/kv'
 import { Session } from 'next-auth'
 import { getServerSession } from 'next-auth/next'
 import { redirect } from 'next/navigation'
-import { type Cart } from './action' // Importing type for Cart
+import { type Cart } from './action'
 
 export type Product = {
 	id: number
@@ -38,24 +38,18 @@ export default async function AddToCart() {
 		redirect('/login')
 	}
 
-	// Extracting user ID from session
 	const userId = session.user._id
-
-	// Retrieving user's cart from KV storage
 	const cart: Cart | null = await kv.get(`testcart-${userId}`)
-
-	// Calculating total quantity of items in the cart
 	const total = cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0
 
 	return (
 		<main className='flex flex-col items-center min-h-screen p-24'>
-			{/* Section for displaying products */}
 			<div className='w-full'>
 				<h1 className='mb-6 text-xl font-semibold text-left text-slate-900'>
 					Products:{' '}
 				</h1>
+
 				<div className='flex gap-6'>
-					{/* Mapping through products array and rendering ProductCard component for each product */}
 					{products.map(product => (
 						<ProductCard
 							key={product.id}
@@ -68,11 +62,10 @@ export default async function AddToCart() {
 				</div>
 			</div>
 
-			{/* Section for displaying cart */}
 			<div className='w-full mt-6'>
 				<h1 className='text-xl font-semibold text-slate-900'>Cart: </h1>
+
 				<div className='flex flex-col gap-2 px-6 py-4 mt-2 border rounded-xl border-slate-700'>
-					{/* Rendering CartItem component for each item in the cart */}
 					{cart?.items ? (
 						cart.items.map((item, index) => (
 							<CartItem
@@ -90,7 +83,6 @@ export default async function AddToCart() {
 					)}
 				</div>
 
-				{/* Section for displaying total quantity of items in the cart */}
 				<div className='flex justify-between px-6 mt-4 font-semibold text-slate-900'>
 					<div>Total</div>
 					<div>{total}</div>
